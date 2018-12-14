@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Director | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+    <!-- bootstrap 3.0.2 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <!-- font Awesome -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Morris chart -->
+    <link href="css/morris/morris.css" rel="stylesheet" type="text/css"/>
+    <!-- jvectormap -->
+    <link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Date Picker -->
+    <link href="css/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
+    <!-- fullCalendar -->
+    <!-- <link href="css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" /> -->
+    <!-- Daterange picker -->
+    <link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="css/iCheck/all.css" rel="stylesheet" type="text/css"/>
+    <!-- bootstrap wysihtml5 - text editor -->
+    <!-- <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" /> -->
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- Theme style -->
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+
+    </style>
+</head>
+<body class="skin-black">
+<!-- header logo: style can be found in header.less -->
+<header class="header">
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+
+                <!-- User Account: style can be found in dropdown.less -->
+
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+
+                <div class="pull-left info">
+                    <p>Hello, Admin</p>
+
+
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <!--<a href="/manage/user/get_users_info.do">-->
+                    <a href="adminindex.html">
+                        <i class="fa fa-dashboard"></i> <span>查看用户</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminnotify.html">
+                        <i class="fa fa-glass"></i> <span>查看通知</span>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <aside class="right-side">
+
+        <!-- Main content -->
+        <section class="panel">
+            <header class="panel-heading">
+                Form Elements
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" id="myForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">学号</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="disabledInput" type="text" placeholder="学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">学院</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="学院">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">专业</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="专业">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">班级</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="班级">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">社团</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="社团">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger">添加</button>
+                </form>
+            </div>
+        </section><!-- /.content -->
+
+    </aside><!-- /.right-side -->
+
+</div><!-- ./wrapper -->
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $("#myForm").click(function () {
+        $.ajax({
+            type: "POST",   //提交的方法
+            url:"/manage/user/add_front_notice.do", //提交的地址
+            data:$('#myForm').serialize(),// 序列化表单值
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                alert(data);  //就将返回的数据显示出来
+                window.location.href="adminindex.html";
+            }
+        });
+    });
+    $(function () {
+
+        function getlist() {
+            $.ajax({
+                url : "/manage/user/get_users_info.do",
+                type : "post",
+                dataType : "json",
+                success : function(data) {
+                    if (data.status == 0) {
+                        handleList(data.data.list);
+                    } else if(data.status == 1) {
+                        alert("你没有管理员权限，请登录！");
+                    }
+                }
+            });
+        }
+
+        function handleUser(data) {
+            $('#user-name').text(data.name);
+        }
+
+        function handleList(data) {
+            /*var html = '';
+             data.map(function (item, index) {
+             //html += '<div class="row row-shop"><div class="col">'+ item.shopName +'</div><div class="col-40">'+ shopStatus(item.enableStatus) +'</div><div class="col-20">'+ goShop(item.enableStatus, item.shopId) +'</div></div>';
+             html +="<tr><td>"+item.id+"</td>" +
+             "<td>"+item.name+"</td>" +
+             "<td>"+item.college+"</td>"+
+             "<td>"+item.professional+"</td>"+
+             "<td>"+item.classes+"</td>"+
+             "<td>"+item.corporation+"</td></tr>";
+             alert("请求data成功");
+             });*/
+            var html = "";
+            for(var i=0;i<data.length;i++){    //遍历data数组
+                var ls = data[i];
+                html +="<tr><td>"+ls.id+"</td>" +
+                        "<td>"+ls.name+"</td>" +
+                        "<td>"+ls.college+"</td>"+
+                        "<td>"+ls.professional+"</td>"+
+                        "<td>"+ls.classes+"</td>"+
+                        "<td>"+ls.corporation+"</td>"+
+                        "<td><button type='button' class='btn btn-info'>编辑</button><td>"+
+                        "<td><button type='button' class='btn btn-danger'>删除</button><td></tr>";
+            }
+
+            $('#bdbody').html(html);
+        }
+
+
+
+        /*       $('#log-out').click(function () {
+         $.ajax({
+         url : "/myo2o/shop/logout",
+         type : "get",
+         contentType : false,
+         processData : false,
+         cache : false,
+         success : function(data) {
+         if (data.success) {
+         window.location.href = '/myo2o/shop/ownerlogin';
+         }
+         },
+         error : function(data, error) {
+         alert(error);
+         }
+         });
+         });*/
+
+        getlist();
+    });
+
+</script>
+
+</body>
+</html>

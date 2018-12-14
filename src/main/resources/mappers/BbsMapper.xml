@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.BbsMapper">
+    <sql id="Base_Column_List" >
+        bbs_id,bbs_title,bbs_content,bbs_time,bbs_author,bbs_applaud,bbs_cmcontent,bbs_cmtime,bbs_cmauthor
+    </sql>
+    <insert id="addNote" parameterType="com.pojo.Bbs">
+      INSERT INTO
+      tb_bbs
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="id !=null">
+              bbs_id,
+          </if>
+          <if test="title !=null">
+              bbs_title,
+          </if>
+          <if test="content !=null">
+              bbs_content,
+          </if>
+          <if test="time ==null">
+              bbs_time,
+          </if>
+          <if test="author !=null">
+              bbs_author,
+          </if>
+          <if test="applaud !=null">
+              bbs_applaud,
+          </if>
+          <if test="cmcontent !=null">
+              bbs_cmcontent,
+          </if>
+          <if test="cmauthor !=null">
+              bbs_cmauthor,
+          </if>
+          <if test="cmtime ==null">
+              bbs_cmtime,
+          </if>
+      </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id !=null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title !=null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content !=null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="time ==null">
+                now(),
+            </if>
+            <if test="author !=null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="applaud !=null">
+                #{applaud,jdbcType=VARCHAR},
+            </if>
+            <if test="cmcontent !=null">
+                #{cmcontent,jdbcType=VARCHAR},
+            </if>
+            <if test="cmauthor !=null">
+                #{cmauthor,jdbcType=VARCHAR},
+            </if>
+            <if test="cmtime ==null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <insert id="addReply" parameterType="com.pojo.Bbs">
+        INSERT INTO
+        tb_bbs
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id !=null">
+                bbs_id,
+            </if>
+            <if test="title !=null">
+                bbs_title,
+            </if>
+            <if test="content !=null">
+                bbs_content,
+            </if>
+            <if test="time ==null">
+                bbs_time,
+            </if>
+            <if test="author !=null">
+                bbs_author,
+            </if>
+            <if test="applaud !=null">
+                bbs_applaud,
+            </if>
+            <if test="cmcontent !=null">
+                bbs_cmcontent,
+            </if>
+            <if test="cmauthor !=null">
+                bbs_cmauthor,
+            </if>
+            <if test="cmtime ==null">
+                bbs_cmtime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id !=null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title !=null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content !=null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="time ==null">
+                now(),
+            </if>
+            <if test="author !=null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="applaud !=null">
+                #{applaud,jdbcType=VARCHAR},
+            </if>
+            <if test="cmcontent !=null">
+                #{cmcontent,jdbcType=VARCHAR},
+            </if>
+            <if test="cmauthor !=null">
+                #{cmauthor,jdbcType=VARCHAR},
+            </if>
+            <if test="cmtime ==null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <insert id="addLike" parameterType="com.pojo.Bbs">
+        insert INTO
+        tb_bbs
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id !=null">
+                bbs_id,
+            </if>
+            <if test="title !=null">
+                bbs_title,
+            </if>
+            <if test="content !=null">
+                bbs_content,
+            </if>
+            <if test="time !=null">
+                bbs_time,
+            </if>
+            <if test="author !=null">
+                bbs_author,
+            </if>
+            <if test="applaud !=null">
+                bbs_applaud,
+            </if>
+            <if test="cmcontent !=null">
+                bbs_cmcontent,
+            </if>
+            <if test="cmauthor !=null">
+                bbs_cmauthor,
+            </if>
+            <if test="cmtime !=null">
+                bbs_cmtime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id !=null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title !=null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content !=null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="time !=null">
+                now(),
+            </if>
+            <if test="author !=null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="applaud !=null">
+                #{applaud,jdbcType=VARCHAR},
+            </if>
+            <if test="cmcontent !=null">
+                #{cmcontent,jdbcType=VARCHAR},
+            </if>
+            <if test="cmauthor !=null">
+                #{cmauthor,jdbcType=VARCHAR},
+            </if>
+            <if test="cmtime !=null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateLike" parameterType="com.pojo.Bbs">
+        UPDATE tb_bbs
+        set
+        bbs_applaud = bbs_applaud + 1
+        where bbs_id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="select" resultType="com.pojo.Bbs" parameterType="integer">
+        select
+        <include refid="Base_Column_List" />
+        from
+        tb_bbs
+        where bbs_id = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

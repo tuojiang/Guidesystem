@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+li {
+list-style-type: none;
+}
+</style>
+<link href="Script/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Script/jquery-1.10.2.min.js"></script>
+<script src="Script/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:50px">
+<form>
+<textarea class="form-control" rows="3" id="pl"></textarea>
+
+<div class="col-md-offset-10" style="margin-top:20px">
+<div class="btn btn-default btn-sm">
+<span class="glyphicon glyphicon-remove"></span>取消
+</div>&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="btn btn-default btn-sm" id="sub">
+<span type="button" class="glyphicon glyphicon-ok"></span>提交
+</div>
+</div>
+
+
+<div class="col-md-offset-1" style="margin-top:50px">
+<ul id="pls"></ul>
+</div>
+</form>
+</div>
+<script type="text/javascript">
+var datas = [
+{
+id: '1',
+pid: '',
+cont: 'aaa'
+},
+{
+id: '2',
+pid: '',
+cont: 'bbb'
+},
+{
+id: '4',
+pid: '2',
+cont: 'dd'
+},
+{
+id: '5',
+pid: '1',
+cont: 'ee'
+},
+{
+id: '3',
+pid: '5',
+cont: 'ccc'
+}
+]
+
+
+$(function () {
+//加载评论
+$.get("", "", function (res) {
+//if ();
+for (var i = 0; i < datas.length; i++) { 
+ItemDataGetTree( datas, datas[i], datas[i].pid)
+}
+});
+
+//遍历数据生成树
+function ItemDataGetTree( datas, data, pid) {
+
+htmlText = "<li id='" + data.id + "'>"
++ data.cont
++ "<div class='col-md-offset-8'>"
++ "评论人："
++ "Admin"
++ "&nbsp;&nbsp;&nbsp;&nbsp;"
++ getDate()
++ "</div>"
++ "<div class=' hidden'>"
++ "<form> "
++ " <textarea class='form-control' rows='3' id='pl'></textarea> "
++ "</form> "
++ "<div class='col-md-offset-10' style='margin-top:20px'> "
++ "<div class='btn btn-default btn-sm' onclick='replayCancel(this)'> "
++ " <span class='glyphicon glyphicon-remove'</span>取消 "
++ "</div>&nbsp;&nbsp;&nbsp;&nbsp; "
++ " <div class='btn btn-default btn-sm' onclick='replayOk(this)'> "
++ "<span class='glyphicon glyphicon-ok'></span>提交 "
++ " </div> "
++ " </div> "
++ "</div>"
++ "<div class='col-md-offset-10'>"
++ "<a href='#' onclick='replay(this)'>回复</a>"
++ "</div>"
++ "<hr/></li>"
+if (data.pid == "")
+{
+$("#pls").append(htmlText);
+for (var i = 0; i < datas.length; i++)
+{
+if (datas[i].id == pid) { 
+ItemDataGetTree(datas, datas[i], datas[i].pid)
+}
+}
+} else
+{
+$("#" + data.pid + "").append("<ul>" + htmlText + "<ul>");
+} 
+}
+$("li").mouseenter(function () {
+$(this).css("background-color", "#EEEEEE");
+});
+$("li").mouseleave(function () {
+$(this).css("background-color", "#fff");
+});
+
+//绑定评论事件
+$("#sub").unbind("click").bind("click", function () {
+
+if ($("#pl").val() == "" || $("#pl").val() == null) {
+return;
+}
+htmlText = "<li>"
++ $("#pl").val()
++ "<div class='col-md-offset-8'>"
++ "评论人："
++ "Admin"
++ "&nbsp;&nbsp;&nbsp;&nbsp;"
++ getDate()
++ "</div>"
++ "<div class=' hidden'>"
++ "<form> "
++ " <textarea class='form-control' rows='3' id='pl'></textarea> "
++ "</form> "
++ "<div class='col-md-offset-10' style='margin-top:20px'> "
++ "<div class='btn btn-default btn-sm' onclick='replayCancel(this)'> "
++ " <span class='glyphicon glyphicon-remove'</span>取消 "
++ "</div>&nbsp;&nbsp;&nbsp;&nbsp; "
++ " <div class='btn btn-default btn-sm' onclick='replayOk(this)'> "
++ "<span class='glyphicon glyphicon-ok'></span>提交 "
++ " </div> "
++ " </div> "
++ "</div>"
++ "<div class='col-md-offset-10'>"
++ "<a href='#' onclick='replay(this)'>回复</a>"
++ "</div>"
++ "<hr/></li>"
+$("#pls").append(htmlText);
+
+$("li").mouseenter(function () {
+$(this).css("background-color", "#EEEEEE");
+});
+$("li").mouseleave(function () {
+$(this).css("background-color", "#fff");
+});
+
+});
+});
+//点击回复按钮
+function replay(t) {
+self = $(t);
+self.parent().prev().removeClass("hidden");
+}
+//回复点击确定按钮
+function replayOk(t) {
+self = $(t);
+self.parent().parent().addClass("hidden");
+
+htmlText = "<li>"
++ $("#pl").val()
++ "<div class='col-md-offset-8'>"
++ "评论人："
++ "Admin"
++ "&nbsp;&nbsp;&nbsp;&nbsp;"
++ getDate()
++ "</div>"
++ "<div class=' hidden'>"
++ "<form> "
++ " <textarea class='form-control' rows='3' id='pl'></textarea> "
++ "</form> "
++ "<div class='col-md-offset-10' style='margin-top:20px'> "
++ "<div class='btn btn-default btn-sm' onclick='replayCancel(this)'> "
++ " <span class='glyphicon glyphicon-remove'</span>取消 "
++ "</div>&nbsp;&nbsp;&nbsp;&nbsp; "
++ " <div class='btn btn-default btn-sm' onclick='replayOk(this)'> "
++ "<span class='glyphicon glyphicon-ok'></span>提交 "
++ " </div> "
++ " </div> "
++ "</div>"
++ "<div class='col-md-offset-10'>"
++ "<a href='#' onclick='replay(this)'>回复</a>"
++ "</div>"
++ "<hr/></li>"
+self.parent().parent().parent().append("<ul>" + htmlText + "</ul>");
+
+$("li").mouseenter(function () {
+$(self).css("background-color", "#EEEEEE");
+});
+$("li").mouseleave(function () {
+$(self).css("background-color", "#fff");
+});
+}
+
+//点击取消
+function replayCancel(t)
+{
+self = $(t);
+self.parent().parent().addClass("hidden");
+}
+
+//获取当前时间
+function getDate() {
+var d = new Date()
+var vYear = d.getFullYear()
+var vMon = d.getMonth() + 1
+var vDay = d.getDate()
+var h = d.getHours();
+var m = d.getMinutes();
+var se = d.getSeconds();
+return s = vYear + "-" + (vMon < 10 ? "0" + vMon : vMon) + "-" + (vDay < 10 ? "0" + vDay : vDay) + " " + (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (se < 10 ? "0" + se : se);
+}
+</script>
+</body>
+</html>

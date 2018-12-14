@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ContentMapper">
+    <resultMap id="BaseResultMap" type="com.pojo.Content">
+        <constructor>
+            <idArg column="content_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="content_title" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="content_content" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="content_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="content_author" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="content_category" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="content_college" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="content_community" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        content_id,content_title,content_content,content_time,content_author,content_category,content_college,content_community
+    </sql>
+    <insert id="inser" parameterType="com.pojo.Content">
+        insert into tb_content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                content_id,
+            </if>
+            <if test="title != null">
+                content_title,
+            </if>
+            <if test="content != null">
+                content_content,
+            </if>
+            <if test="time != null">
+                content_time,
+            </if>
+            <if test="author != null">
+                content_author,
+            </if>
+            <if test="category != null">
+                content_category,
+            </if>
+            <if test="college != null">
+                content_college,
+            </if>
+            <if test="community != null">
+                content_community,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" prefixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                now(),
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="college != null">
+                #{college,jdbcType=VARCHAR},
+            </if>
+            <if test="community != null">
+                #{community,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <insert id="insertSelective" parameterType="com.pojo.Content">
+
+        insert INTO tb_content
+        (content_id, content_title, content_content, content_time, content_author, content_category, content_college, content_community)
+        VALUES (  #{id,jdbcType=INTEGER},
+                  #{title,jdbcType=VARCHAR},
+                  #{content,jdbcType=VARCHAR},
+                  now(),
+                  #{author,jdbcType=VARCHAR},
+                  #{category,jdbcType=VARCHAR},
+                  #{college,jdbcType=VARCHAR},
+                  #{community,jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="updateBycontent" parameterType="com.pojo.Content">
+
+        UPDATE  tb_content
+        SET
+          content_title = #{title,jdbcType=VARCHAR},
+          content_content = #{content,jdbcType=VARCHAR},
+          content_time = now(),
+          content_author = #{author,jdbcType=VARCHAR},
+          content_category = #{category,jdbcType=VARCHAR},
+          content_college = #{college,jdbcType=VARCHAR},
+          content_community = #{community,jdbcType=VARCHAR}
+        where
+        content_id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="queryNotify" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tb_content
+    </select>
+</mapper>
